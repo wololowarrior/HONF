@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="honf.harshil.com.honf">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher_1"
+        android:label="HONF"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:label="High ON Food">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".signup"
+            android:label="SignUp!" />
+        <activity
+            android:name=".search_enter"
+            android:label="Search" />
+        <activity
+            android:name=".results"
+            android:label="Results" />
+        <activity android:name=".restaraunt_profile" />
+        <activity
+            android:name=".user_home"
+            android:label="User Home" />
+        <activity android:name=".admin" />
+        <activity android:name=".BaseActivity" />
+        <activity android:name=".activity_add_restaurant" android:label="Add Restaurant"></activity>
+    </application>
+
+</manifest>

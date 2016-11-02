@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">HONF</string>
+    <string name="title_activity_scrolling">ScrollingActivity</string>
+    <string-array name="menu">
+        <item>Home</item>
+        <item>Restaurant</item>
+        <item>Admin</item>
+    </string-array>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_user_home">user_home</string>
+</resources>

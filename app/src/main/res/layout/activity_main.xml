@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_at"
+    android:background="#000"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="honf.harshil.com.honf.MainActivity">
+    <!--<FrameLayout-->
+        <!--android:id="@+id/content_frame"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+        <!--<ListView-->
+            <!--android:layout_width="240dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_gravity="start"-->
+            <!--android:choiceMode="singleChoice"-->
+            <!--android:divider="@color/colorAccent"-->
+            <!--android:dividerHeight="0dp"-->
+            <!--android:background="#111"></ListView>-->
+    <!--</FrameLayout>-->
+
+    <LinearLayout
+        android:id="@+id/ll1"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true">
+
+<Button
+    android:id="@+id/login_button"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Login"
+    android:textSize="24sp"
+    android:textColor="#fff"
+    style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
+    android:background="@drawable/my_button"/>
+    <Button
+android:onClick="search"
+        android:id="@+id/continue_button"
+        android:layout_below="@id/login_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Continue Without Login"
+        android:textSize="20sp"
+        style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
+        android:textColor="#fff"
+        android:background="@drawable/my_button2"/>
+    <Button
+        android:textAllCaps="false"
+        style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
+        android:textSize="24sp"
+        android:textColor="#fff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="signup"
+        android:id="@+id/signup_button"
+        android:background="@drawable/my_button3"
+        android:layout_below="@id/continue_button"
+        android:text="SignUP!"
+        />
+    </LinearLayout>
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:backgroundTint="#bf360c"
+
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@android:drawable/ic_input_add" >
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/add_hotel"
+            app:fab_label="Add Restaurant"
+            android:onClick="addRestaurant"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:src="@android:drawable/ic_input_add"
+            android:tag="Add hotel"
+            />
+    </com.github.clans.fab.FloatingActionMenu>
+</RelativeLayout>
