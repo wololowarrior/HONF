@@ -11,6 +11,7 @@ import android.preference.PreferenceManager;
 import android.support.design.internal.NavigationMenu;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -124,10 +125,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                                     Toast.makeText(getApplicationContext(),
                                             "Welcome Back " + cursor.getString(cursor.getColumnIndex("name")), Toast.LENGTH_LONG).show();
                                     Intent i = new Intent(getApplicationContext(), user_home.class);
+
                                     startActivity(i);
                                     finish();
 //                         Redirect to dashboard / home screen.
-                                    //login.dismiss();
+                                    login.dismiss();
                                 } else if (!(p.equals(password))) {
                                     Toast.makeText(getApplicationContext(), "Wrong Password", Toast.LENGTH_LONG).show();
                                 }
