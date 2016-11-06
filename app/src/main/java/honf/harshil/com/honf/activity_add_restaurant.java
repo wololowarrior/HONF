@@ -39,6 +39,12 @@ public class activity_add_restaurant extends BaseActivity implements View.OnClic
                 DialogFragment newFragment = new TimePickerFragment();
                 newFragment.show(getFragmentManager(), "TimePicker");
                 break;
+            case R.id.closingTime:
+
+                DialogFragment newFragment_1 = new TimePickerFragment();
+                newFragment_1.show(getFragmentManager(), "TimePicker");
+
+                break;
         }
     }
 
