@@ -7,6 +7,7 @@ import android.icu.util.Calendar;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.text.format.DateFormat;
@@ -25,16 +26,17 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
         int min=c.get(Calendar.MINUTE);
         return new TimePickerDialog(getActivity(),this,hour,min, DateFormat.is24HourFormat(getActivity()));
     }
+
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
 
         EditText et = (EditText) getActivity().findViewById(R.id.openingTime);
         EditText et2 = (EditText) getActivity().findViewById(R.id.closingTime);
-        if (et.isEnabled()) {
+        if (et.isFocused()) {
             et.setText(String.valueOf(hourOfDay) +
                     ":" + String.valueOf(minute));
         }
-        else if(et2.isEnabled()){
-            et.setText(String.valueOf(hourOfDay) +
+        else if(et2.isFocused()){
+            et2.setText(String.valueOf(hourOfDay) +
                     ":" + String.valueOf(minute));
         }
     }

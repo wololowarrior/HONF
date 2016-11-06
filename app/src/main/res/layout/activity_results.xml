@@ -13,4 +13,11 @@
     android:layout_height="wrap_content"
     android:text="Results displayed here, flagging the restaurant available for future use, sorting options etc"
     android:textSize="30sp"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonTemp"
+        android:onClick="restProfile"
+        android:layout_alignParentBottom="true"
+        android:text="Restaurant's Profile"/>
 </RelativeLayout>
