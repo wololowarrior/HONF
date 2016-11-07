@@ -111,6 +111,15 @@
                          />
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
+            <Button
+                android:id="@+id/openCamera"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="add images!"/>
+            <ImageView
+                android:id="@+id/capturedImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </ScrollView>
 
