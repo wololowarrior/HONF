@@ -10,6 +10,6 @@ public class admin  extends BaseActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FrameLayout F = (FrameLayout) findViewById(R.id.content_frame);
-        getLayoutInflater().inflate(R.layout.activity_main, F);
+        getLayoutInflater().inflate(R.layout.activity_admin, F);
     }
 }

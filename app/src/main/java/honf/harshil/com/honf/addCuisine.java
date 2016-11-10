@@ -1,5 +1,6 @@
 package honf.harshil.com.honf;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -22,13 +23,20 @@ public class addCuisine extends SQLiteOpenHelper implements BaseColumns {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-    sqLiteDatabase.execSQL(TABLE_NAME);
+        sqLiteDatabase.execSQL(TABLE_NAME);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-    sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(sqLiteDatabase);
     }
 
+    boolean insert_data(String nameCuisine) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues=new ContentValues();
+        contentValues.put(Cusine_name,nameCuisine);
+        long result=db.insert(TABLE_NAME,null,contentValues);
+        return result!=-1;
+    }
 }
