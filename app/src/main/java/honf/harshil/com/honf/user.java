@@ -24,13 +24,13 @@ public class user extends SQLiteOpenHelper implements BaseColumns {
     private static final String name = "name";
     private static final String password = "password";
     private static final String number = "number";
-    String Create_reg_table = "CREATE TABLE " + TABLE_Reg +
+    private String Create_reg_table = "CREATE TABLE " + TABLE_Reg +
             "(" + username + " TEXT PRIMARY KEY,"
             + name + " TEXT,"
             + password + " TEXT,"
             + number + " TEXT)";
 
-    public user(Context context) {
+    user(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VER);
     }
 
@@ -45,7 +45,7 @@ public class user extends SQLiteOpenHelper implements BaseColumns {
         onCreate(sqLiteDatabase);
     }
 
-    public boolean insert_data(String uname, String nam, String pass, String num) {
+    boolean insert_data(String uname, String nam, String pass, String num) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(username, uname);
@@ -53,21 +53,17 @@ public class user extends SQLiteOpenHelper implements BaseColumns {
         values.put(password, pass);
         values.put(number, num);
         long res = db.insert(TABLE_Reg, null, values);
-        if (res == -1) {
-            return false;
-        } else
-            return true;
+        return res != -1;
 
     }
 
-    public Cursor getEntry(String username) {
+    Cursor getEntry(String username) {
         SQLiteDatabase db = this.getWritableDatabase();
 
-        Cursor cursor = db.rawQuery("select * from " + TABLE_Reg + " where username='" + username + "'", null);
         //String p="";
 
 
-        return cursor;
+        return db.rawQuery("select * from " + TABLE_Reg + " where username='" + username + "'", null);
     }
 }
 

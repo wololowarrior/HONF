@@ -85,6 +85,10 @@ public class BaseActivity extends AppCompatActivity {
                         Intent i1=new Intent(getApplicationContext(),activity_add_restaurant.class);
                         startActivity(i1);
                         break;
+                    case R.id.admin:
+                        Intent i2=new Intent(getApplicationContext(),admin.class);
+                        startActivity(i2);
+                        break;
                 }
                 return false;
             }
