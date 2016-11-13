@@ -13,7 +13,7 @@ public class addCuisine extends SQLiteOpenHelper implements BaseColumns {
     private static final String DATABASE_NAME = "DB1";
     private static final String TABLE_NAME = "CuisineTable";
     private static final String Cusine_name = "Cuisine_Name";
-    private static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME +
+    public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME +
             "(" + _ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + Cusine_name + " TEXT)";
 
@@ -21,15 +21,15 @@ public class addCuisine extends SQLiteOpenHelper implements BaseColumns {
         super(context, DATABASE_NAME, null, DATABASE_VER);
     }
 
+
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL(CREATE_TABLE);
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
-        onCreate(sqLiteDatabase);
+
     }
 
     boolean insert_data(String nameCuisine) {

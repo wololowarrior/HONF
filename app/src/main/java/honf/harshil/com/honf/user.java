@@ -15,7 +15,7 @@ import static honf.harshil.com.honf.R.id.pass;
  */
 
 
-public class user extends SQLiteOpenHelper implements BaseColumns {
+ class user extends SQLiteOpenHelper implements BaseColumns {
     private static final int DATABASE_VER = 2;
     private static final String DATABASE_NAME = "DB1";
     private static final String TABLE_Reg = "registration";
@@ -24,19 +24,20 @@ public class user extends SQLiteOpenHelper implements BaseColumns {
     private static final String name = "name";
     private static final String password = "password";
     private static final String number = "number";
-    private String Create_reg_table = "CREATE TABLE " + TABLE_Reg +
-            "(" + username + " TEXT PRIMARY KEY,"
-            + name + " TEXT,"
-            + password + " TEXT,"
-            + number + " TEXT)";
 
     user(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VER);
     }
 
-    @Override
+
     public void onCreate(SQLiteDatabase sqdb) {
-        sqdb.execSQL(Create_reg_table);
+        String create_reg_table = "CREATE TABLE " + TABLE_Reg +
+                "(" + username + " TEXT PRIMARY KEY,"
+                + name + " TEXT,"
+                + password + " TEXT,"
+                + number + " TEXT)";
+        sqdb.execSQL(create_reg_table);
+        sqdb.execSQL(addCuisine.CREATE_TABLE);
     }
 
     @Override
