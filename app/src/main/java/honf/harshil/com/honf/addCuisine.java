@@ -7,6 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class addCuisine extends SQLiteOpenHelper implements BaseColumns {
 
@@ -44,5 +47,18 @@ public class addCuisine extends SQLiteOpenHelper implements BaseColumns {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         return sqLiteDatabase.rawQuery("Select * from "+TABLE_NAME, null);
 
+    }
+    public List<String> getAll(){
+        List<String> cuisines= new ArrayList<String>();
+        SQLiteDatabase database=this.getWritableDatabase();
+        Cursor cursor=database.rawQuery("Select * from "+TABLE_NAME,null);
+        if (cursor.moveToFirst()) {
+            do {
+                cuisines.add(cursor.getString(cursor.getColumnIndex(Cusine_name)));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        database.close();
+        return cuisines;
     }
     }

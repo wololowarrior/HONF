@@ -6,6 +6,7 @@
         <item>Restaurant</item>
         <item>Admin</item>
     </string-array>
+    <string name="spinner">Select Cuisuine</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_user_home">user_home</string>
     <string name="random">qwfqwfwfhwoeifnegoiweohweg\nsdvuibwviubweiubweuwbewb\n\n\n\n\n\n\n\n\nsebiuwbiuwbuwuiewuiwenbiuwebuibywubyfxnwefhnwefhwuenfh</string>

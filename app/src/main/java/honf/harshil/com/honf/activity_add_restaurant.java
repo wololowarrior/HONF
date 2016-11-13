@@ -2,37 +2,43 @@ package honf.harshil.com.honf;
 
 import android.Manifest;
 import android.app.DialogFragment;
-import android.app.Fragment;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
-
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-public class activity_add_restaurant extends BaseActivity implements View.OnClickListener, View.OnFocusChangeListener, TimePickerDialog.OnTimeSetListener {
+import java.util.List;
+
+public class activity_add_restaurant extends BaseActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener, View.OnFocusChangeListener, TimePickerDialog.OnTimeSetListener {
     EditText et, et1;
+    Spinner spinner;
     Button openCamera;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FrameLayout F = (FrameLayout) findViewById(R.id.content_frame);
         getLayoutInflater().inflate(R.layout.activity_add_restaurant, F);
         et = (EditText) findViewById(R.id.openingTime);
+        spinner = (Spinner) findViewById(R.id.spinner);
+        spinner.setPrompt("----Select-----");
+        spinner.setOnItemSelectedListener(this);
         et1 = (EditText) findViewById(R.id.closingTime);
-        openCamera=(Button)findViewById(R.id.openCamera);
+        openCamera = (Button) findViewById(R.id.openCamera);
         et.setOnClickListener(this);
         et.setOnFocusChangeListener(this);
         et1.setOnClickListener(this);
@@ -41,28 +47,15 @@ public class activity_add_restaurant extends BaseActivity implements View.OnClic
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED) {
-
-            // Should we show an explanation?
             if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                     Manifest.permission.CAMERA)) {
-
-                // Show an expanation to the user *asynchronously* -- don't block
-                // this thread waiting for the user's response! After the user
-                // sees the explanation, try again to request the permission.
-
             } else {
-
-                // No explanation needed, we can request the permission.
-
                 ActivityCompat.requestPermissions(this,
                         new String[]{Manifest.permission.CAMERA},
                         0);
-
-                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
-                // app-defined int constant. The callback method gets the
-                // result of the request.
             }
         }
+        loadspinnerdata();
     }
 
 
@@ -90,12 +83,13 @@ public class activity_add_restaurant extends BaseActivity implements View.OnClic
                 break;
         }
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // TODO Auto-generated method stub
-        ImageView capturedImage=(ImageView)findViewById(R.id.capturedImage);
+        ImageView capturedImage = (ImageView) findViewById(R.id.capturedImage);
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK) {
+        if (resultCode == RESULT_OK) {
             Bitmap bp = (Bitmap) data.getExtras().get("data");
             capturedImage.setImageBitmap(bp);
         }
@@ -119,8 +113,27 @@ public class activity_add_restaurant extends BaseActivity implements View.OnClic
         }
     }
 
+    private void loadspinnerdata() {
+        addCuisine cuisine = new addCuisine(getApplicationContext());
+        List<String> cuisines = cuisine.getAll();
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, cuisines);
+        arrayAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spinner.setAdapter(arrayAdapter);
+    }
+
     @Override
     public void onTimeSet(TimePicker timePicker, int i, int i1) {
+
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        String str = adapterView.getItemAtPosition(i).toString();
+        Toast.makeText(getApplicationContext(), str, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
 }
