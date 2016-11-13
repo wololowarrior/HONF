@@ -1,5 +1,6 @@
 package honf.harshil.com.honf;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -22,12 +23,16 @@ public class add_restaurant_db extends SQLiteOpenHelper implements BaseColumns {
     private static final String Phone="Phone";
     private static final String openingTime="OT";
     private static final String closingTime="CT";
-    public static final String CREATE_TABLE="CREATE TABLE "+TABLE_NAME+"( "+_ID+" INTEGER PRIMARY KEY AUTO INCREMENT,"+
+    private static final String cuisine="cuisine";
+
+    public static final String CREATE_TABLE="CREATE TABLE "+TABLE_NAME+"( "+_ID+" INTEGER PRIMARY KEY AUTOINCREMENT,"+
                                              Name+" TEXT,"+
-                                                Address+" TEXT,"+City+" TEXT,"+Pincode+" INTEGER,"+Phone+" INTEGER,"+openingTime+" TEXT,"+closingTime+" TEXT)";
+                                                Address+" TEXT,"+City+" TEXT,"+Pincode+" TEXT,"+Phone+" TEXT,"+openingTime+" TEXT,"+closingTime+" TEXT,"+cuisine+" TEXT)";
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-
+        sqLiteDatabase.execSQL(user.create_reg_table);
+        sqLiteDatabase.execSQL(addCuisine.CREATE_TABLE);
+        sqLiteDatabase.execSQL(CREATE_TABLE);
     }
     add_restaurant_db (Context context){
         super(context,DATABASE_NAME,null,DATABASE_VER);
@@ -35,6 +40,20 @@ public class add_restaurant_db extends SQLiteOpenHelper implements BaseColumns {
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
+    }
+    public Boolean addRes(String name,String address,String city,String pincode,String phone,String ot,String ct,String cu){
+        SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
+        ContentValues  contentValues= new ContentValues();
+        contentValues.put(Name,name);
+        contentValues.put(Address,address);
+        contentValues.put(City,city);
+        contentValues.put(Phone,phone);
+        contentValues.put(Pincode,pincode);
+        contentValues.put(openingTime,ot);
+        contentValues.put(closingTime,ct);
+        contentValues.put(cuisine,cu);
+        long res=sqLiteDatabase.insert(TABLE_NAME,null,contentValues);
+        return res!=-1;
     }
 
 }

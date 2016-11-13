@@ -24,18 +24,18 @@ import static honf.harshil.com.honf.R.id.pass;
     private static final String name = "name";
     private static final String password = "password";
     private static final String number = "number";
-
+    public static final String create_reg_table = "CREATE TABLE " + TABLE_Reg +
+            "(" + username + " TEXT PRIMARY KEY,"
+            + name + " TEXT,"
+            + password + " TEXT,"
+            + number + " TEXT)";
     user(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VER);
     }
 
 
     public void onCreate(SQLiteDatabase sqdb) {
-        String create_reg_table = "CREATE TABLE " + TABLE_Reg +
-                "(" + username + " TEXT PRIMARY KEY,"
-                + name + " TEXT,"
-                + password + " TEXT,"
-                + number + " TEXT)";
+
         sqdb.execSQL(create_reg_table);
         sqdb.execSQL(addCuisine.CREATE_TABLE);
         sqdb.execSQL(add_restaurant_db.CREATE_TABLE);

@@ -28,7 +28,9 @@ public class addCuisine extends SQLiteOpenHelper implements BaseColumns {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-
+        sqLiteDatabase.execSQL(user.create_reg_table);
+        sqLiteDatabase.execSQL(CREATE_TABLE);
+        sqLiteDatabase.execSQL(add_restaurant_db.CREATE_TABLE);
     }
 
     @Override

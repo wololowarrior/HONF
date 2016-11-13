@@ -18,15 +18,18 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.util.List;
 
 public class activity_add_restaurant extends BaseActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener, View.OnFocusChangeListener, TimePickerDialog.OnTimeSetListener {
+    public String str;
     EditText et, et1;
     Spinner spinner;
     Button openCamera;
+    TextView t1, t2, t3, t4, t5, t6, t7;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,8 @@ public class activity_add_restaurant extends BaseActivity implements AdapterView
         et.setOnClickListener(this);
         et.setOnFocusChangeListener(this);
         et1.setOnClickListener(this);
+        Button add = (Button) findViewById(R.id.add);
+        add.setOnClickListener(this);
         et1.setOnFocusChangeListener(this);
         openCamera.setOnClickListener(this);
         if (ContextCompat.checkSelfPermission(this,
@@ -78,7 +83,26 @@ public class activity_add_restaurant extends BaseActivity implements AdapterView
                 if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
                     startActivityForResult(takePictureIntent, 0);
                 }
+            case R.id.add:
+                t1 = (TextView) findViewById(R.id.name);
+                t2 = (TextView) findViewById(R.id.address);
+                t3 = (TextView) findViewById(R.id.city);
+                t4 = (TextView) findViewById(R.id.pin);
+                t5 = (TextView) findViewById(R.id.phone);
+                t6 = (TextView) findViewById(R.id.openingTime);
+                t7 = (TextView) findViewById(R.id.closingTime);
+                add_restaurant_db db = new add_restaurant_db(this);
+                boolean res = db.addRes(t1.getText().toString(), t2.getText().toString(), t3.getText().toString(), t4.getText().toString(), t5.getText().toString(), t6.getText().toString(), t7.getText().toString(), str);
+                if(res){
+                    Toast.makeText(getApplicationContext(),"Inserted",Toast.LENGTH_SHORT).show();
+                    Intent i=new Intent(getApplicationContext(),MainActivity.class);
+                    startActivity(i);
+                    finish();
+                }
+                else{
+                    Toast.makeText(getApplicationContext(),"Not Inserted",Toast.LENGTH_SHORT).show();
 
+                }
 
                 break;
         }
@@ -128,12 +152,13 @@ public class activity_add_restaurant extends BaseActivity implements AdapterView
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        String str = adapterView.getItemAtPosition(i).toString();
+        str = adapterView.getItemAtPosition(i).toString();
         Toast.makeText(getApplicationContext(), str, Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
+
 
     }
 }
