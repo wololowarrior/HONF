@@ -2,6 +2,7 @@ package honf.harshil.com.honf;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
@@ -39,4 +40,9 @@ public class addCuisine extends SQLiteOpenHelper implements BaseColumns {
         long result=db.insert(TABLE_NAME,null,contentValues);
         return result!=-1;
     }
-}
+    Cursor getAllCuisine() {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        return sqLiteDatabase.rawQuery("Select * from "+TABLE_NAME, null);
+
+    }
+    }

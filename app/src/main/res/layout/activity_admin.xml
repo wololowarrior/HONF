@@ -13,6 +13,7 @@
         android:textSize="40sp" />
 
     <LinearLayout
+        android:id="@+id/ll1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -35,9 +36,38 @@
             android:id="@+id/appCompatImageButton"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:src="@drawable/ic_addit"
             android:layout_weight="0.10"
             android:background="@drawable/enterok"
-            />
+            android:src="@drawable/ic_addit" />
     </LinearLayout>
+    <TextView
+        android:layout_below="@id/ll1"
+        android:textSize="40sp"
+        android:id="@+id/name"
+        android:textColor="#000"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:text="Cuisines"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:id="@+id/line"
+        android:layout_below="@id/name"
+        android:background="#000"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name">
+
+
+        <TableLayout
+            android:id="@+id/table"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:stretchColumns="0,1">
+
+
+        </TableLayout>
+    </ScrollView>
 </RelativeLayout>
