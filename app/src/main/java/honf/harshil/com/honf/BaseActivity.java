@@ -89,6 +89,11 @@ public class BaseActivity extends AppCompatActivity {
                         Intent i2=new Intent(getApplicationContext(),admin.class);
                         startActivity(i2);
                         break;
+                    case R.id.search:
+                        Intent i3=new Intent(getApplicationContext(),search_enter.class);
+                        startActivity(i3);
+                        finish();
+                        break;
                 }
                 return false;
             }

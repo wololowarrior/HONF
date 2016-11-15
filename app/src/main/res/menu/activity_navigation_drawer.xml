@@ -15,7 +15,7 @@
         android:title="Admin"
         android:icon="@drawable/contact_us_icon"
         />
-
+<item android:id="@+id/search" android:title="Search" android:icon="@drawable/ic_pageview_black_24dp"/>
     <item
         android:id="@+id/action_logout"
         android:title="Logout"
