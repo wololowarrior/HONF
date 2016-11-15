@@ -2,18 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
     android:layout_height="match_parent"
     tools:context="honf.harshil.com.honf.search_enter">
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Location"
-    android:textSize="40sp"
-    android:textColor="#82b1ff"
-    android:id="@+id/text1"
-    android:layout_alignParentTop="true"
-    android:layout_alignParentStart="true"
-    android:layout_marginTop="37dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -54,20 +46,28 @@
         android:id="@+id/linearLayout"
         android:layout_below="@+id/text1"
         android:layout_alignParentStart="true">
-
-<EditText
+<android.support.design.widget.TextInputLayout
+    android:layout_width="0dp"
     android:layout_weight="1.00"
+
+    android:layout_height="wrap_content">
+<EditText
+    android:hint="Location"
+    android:layout_weight="1"
     android:textSize="30sp"
 android:id="@+id/location"
+    android:textColorHint="#42a5f5"
     android:layout_below="@id/text1"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content" />
-        <ImageView
+</android.support.design.widget.TextInputLayout>
+        <android.support.v7.widget.AppCompatImageButton
             android:id="@+id/loc"
-            android:src="@mipmap/location_ic"
+            android:src="@drawable/location"
             android:layout_weight="0.20"
+            android:background="@drawable/enterok"
             android:layout_width="wrap_content"
-            android:layout_height="67dp" />
+            android:layout_height="match_parent" />
     </LinearLayout>
 
 

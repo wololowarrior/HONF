@@ -29,6 +29,7 @@ public class search_enter extends BaseActivity implements AdapterView.OnItemSele
     String cuisuine;
     EditText t;
     private Spinner spinner;
+    private String cityname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +44,6 @@ public class search_enter extends BaseActivity implements AdapterView.OnItemSele
             @Override
             public void onClick(View view) {
                 if(gps.canGetLocation()){
-
                     double latitude = gps.getLatitude();
                     double longitude = gps.getLongitude();
 
@@ -57,13 +57,13 @@ public class search_enter extends BaseActivity implements AdapterView.OnItemSele
                             location3 = listAddresses.get(0).getAddressLine(2);
                             location4= listAddresses.get(0).getAddressLine(3);
 
-
+                             cityname = listAddresses.get(0).getLocality();
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
 
-
+                    t.setText(cityname);
                     Toast.makeText(getApplicationContext(),location1+" "+location2+" "+location3+" "+location4, Toast.LENGTH_LONG).show();
 
                 }
