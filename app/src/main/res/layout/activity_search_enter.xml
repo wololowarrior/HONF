@@ -49,7 +49,7 @@
 <android.support.design.widget.TextInputLayout
     android:layout_width="0dp"
     android:layout_weight="1.00"
-
+    android:layout_marginTop="20dp"
     android:layout_height="wrap_content">
 <EditText
     android:hint="Location"
@@ -63,6 +63,7 @@ android:id="@+id/location"
 </android.support.design.widget.TextInputLayout>
         <android.support.v7.widget.AppCompatImageButton
             android:id="@+id/loc"
+            android:layout_marginTop="20dp"
             android:src="@drawable/location"
             android:layout_weight="0.20"
             android:background="@drawable/enterok"
