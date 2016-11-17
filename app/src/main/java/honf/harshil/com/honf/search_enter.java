@@ -93,7 +93,7 @@ public class search_enter extends BaseActivity implements AdapterView.OnItemSele
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         str = adapterView.getItemAtPosition(i).toString();
-        Toast.makeText(getApplicationContext(), str, Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), str, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -103,11 +103,16 @@ public class search_enter extends BaseActivity implements AdapterView.OnItemSele
 
     public void content(View view) {
         location1 =t.getText().toString();
-        Intent i = new Intent(getApplicationContext(), results.class);
+        if(location1.equals("")){
+            Toast.makeText(getApplicationContext(),"Please enter location",Toast.LENGTH_LONG).show();
+        }
+        else {
+            Intent i = new Intent(getApplicationContext(), results.class);
 //        Log.d("debog",location1);
-        i.putExtra("Location",location1);
-        i.putExtra("cuisine",str);
-        startActivity(i);
+            i.putExtra("Location", location1);
+            i.putExtra("cuisine", str);
+            startActivity(i);
+        }
     }
 }
 

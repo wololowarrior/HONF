@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 
+import java.util.Objects;
+
 /**
  * Created by harshil on 13.11.16.
  */
@@ -34,6 +36,7 @@ public class add_restaurant_db extends SQLiteOpenHelper implements BaseColumns {
         sqLiteDatabase.execSQL(user.create_reg_table);
         sqLiteDatabase.execSQL(addCuisine.CREATE_TABLE);
         sqLiteDatabase.execSQL(CREATE_TABLE);
+        sqLiteDatabase.execSQL(addFavRestaurant.Createtable);
     }
     add_restaurant_db (Context context){
         super(context,DATABASE_NAME,null,DATABASE_VER);
@@ -56,10 +59,25 @@ public class add_restaurant_db extends SQLiteOpenHelper implements BaseColumns {
         long res=sqLiteDatabase.insert(TABLE_NAME,null,contentValues);
         return res!=-1;
     }
-    public Cursor getAll(){
-        SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
-        ContentValues contentValues=new ContentValues();
-        return sqLiteDatabase.rawQuery("Select "+_ID+" , "+Name+" from "+TABLE_NAME,null);
+    public Cursor getAll(String location,String cuisine){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        Cursor cursor;
+        if(Objects.equals(cuisine, "All")) {
+            ContentValues contentValues = new ContentValues();
+            cursor=sqLiteDatabase.rawQuery("Select " + _ID + " , " + Name + " from " + TABLE_NAME+" where City='"+location+"'", null);
+        }
+        else {
+            cursor=sqLiteDatabase.rawQuery("Select " + _ID + " , " + Name + " from " + TABLE_NAME+" where City='"+location+"' and cuisine='"+cuisine+"'", null);
+        }
+        return cursor;
+
+    }
+    public  Cursor getdata(int id){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        Cursor cursor;
+        cursor=sqLiteDatabase.rawQuery("Select * from "+TABLE_NAME+" where "+ _ID+"="+id,null);
+
+        return cursor;
     }
 
 }

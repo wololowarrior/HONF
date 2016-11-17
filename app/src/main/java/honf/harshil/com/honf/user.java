@@ -38,6 +38,8 @@ import static honf.harshil.com.honf.R.id.pass;
 
         sqdb.execSQL(create_reg_table);
         sqdb.execSQL(addCuisine.CREATE_TABLE);
+        sqdb.execSQL(addFavRestaurant.Createtable);
+
         sqdb.execSQL(add_restaurant_db.CREATE_TABLE);
     }
 

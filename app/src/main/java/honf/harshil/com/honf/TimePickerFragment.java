@@ -7,11 +7,8 @@ import android.icu.util.Calendar;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
-import android.util.Log;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.text.format.DateFormat;
+import android.widget.EditText;
 import android.widget.TimePicker;
 
 /**
@@ -22,31 +19,34 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        final Calendar c=Calendar.getInstance();
-        int hour=c.get(Calendar.HOUR_OF_DAY);
-        int min=c.get(Calendar.MINUTE);
-        return new TimePickerDialog(getActivity(),this,hour,min, DateFormat.is24HourFormat(getActivity()));
+        final Calendar c = Calendar.getInstance();
+        int hour = c.get(Calendar.HOUR_OF_DAY);
+        int min = c.get(Calendar.MINUTE);
+        return new TimePickerDialog(getActivity(), this, hour, min, DateFormat.is24HourFormat(getActivity()));
     }
 
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        String hour="";
-        if(String.valueOf(hourOfDay).length()==1){
-            hour="0"+String.valueOf(hourOfDay);
+        String hour = "";
+        String min = "";
+        if (String.valueOf(hourOfDay).length() == 1) {
+            hour = "0" + String.valueOf(hourOfDay);
+        } else {
+            hour = String.valueOf(hourOfDay);
         }
-        else {
-            hour=String.valueOf(hourOfDay);
+        if (String.valueOf(minute).length() == 1) {
+            min = "0" + String.valueOf(minute);
         }
-       // Log.d("hourofday",String.valueOf(hourOfDay));
+        else min=String.valueOf(minute);
+        // Log.d("hourofday",String.valueOf(hourOfDay));
         EditText et = (EditText) getActivity().findViewById(R.id.openingTime);
         EditText et2 = (EditText) getActivity().findViewById(R.id.closingTime);
         if (et.isFocused()) {
 
             et.setText(String.valueOf(hour) +
-                    ":" + String.valueOf(minute));
-        }
-        else if(et2.isFocused()){
+                    ":" + String.valueOf(min));
+        } else if (et2.isFocused()) {
             et2.setText(String.valueOf(hourOfDay) +
-                    ":" + String.valueOf(minute));
+                    ":" + String.valueOf(min));
         }
     }
 

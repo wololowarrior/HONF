@@ -2,6 +2,8 @@ package honf.harshil.com.honf;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,6 +65,9 @@ public class dbadapter extends RecyclerView.Adapter<dbadapter.ViewHolder> {
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             this.context.startActivity(i);
         }
+    }
+    static SharedPreferences getSharedPreferences(Context ctx) {
+        return PreferenceManager.getDefaultSharedPreferences(ctx);
     }
 }
 

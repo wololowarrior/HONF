@@ -49,17 +49,17 @@ public class activity_add_restaurant extends BaseActivity implements AdapterView
         add.setOnClickListener(this);
         et1.setOnFocusChangeListener(this);
         openCamera.setOnClickListener(this);
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.CAMERA)
-                != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                    Manifest.permission.CAMERA)) {
-            } else {
-                ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.CAMERA},
-                        0);
-            }
-        }
+//        if (ContextCompat.checkSelfPermission(this,
+//                Manifest.permission.CAMERA)
+//                != PackageManager.PERMISSION_GRANTED) {
+//            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+//                    Manifest.permission.CAMERA)) {
+//            } else {
+//                ActivityCompat.requestPermissions(this,
+//                        new String[]{Manifest.permission.CAMERA},
+//                        0);
+//            }
+//        }
         loadspinnerdata();
     }
 

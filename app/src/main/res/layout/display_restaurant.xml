@@ -4,26 +4,48 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-<android.support.v7.widget.CardView
-    android:layout_width="match_parent"
-    android:layout_margin="10dp"
-    app:cardElevation="7dp"
-    android:layout_height="wrap_content">
-    <LinearLayout
+
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:gravity="center"
-        android:orientation="vertical"
+        android:layout_margin="10dp"
+        app:cardElevation="3dp"
         android:layout_height="wrap_content">
-        <ImageView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:src= "@drawable/sample"/>
-        <TextView
-            android:textSize="30sp"
-            android:id="@+id/resname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Restaurant Name"/>
-    </LinearLayout>
-</android.support.v7.widget.CardView>
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:elevation="3sp"
+                android:scaleType="fitXY"
+                android:src= "@drawable/sample"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                    <TextView
+                        android:textSize="30sp"
+                        android:id="@+id/resname"
+                        android:layout_gravity="start"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Restaurant Name"/>
+
+                <Switch
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:showText="true"
+                    android:id="@+id/favit"
+                    android:textOff="Fav"
+                    android:splitTrack="false"
+                    android:checked="false"
+                    android:switchTextAppearance="@style/TextAppearance.AppCompat.Caption"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                    android:layout_gravity="end" />
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
 </LinearLayout>

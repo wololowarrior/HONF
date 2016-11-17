@@ -95,6 +95,11 @@ public class BaseActivity extends AppCompatActivity {
                         startActivity(i3);
                         finish();
                         break;
+                    case R.id.action_home:
+                        Intent i4=new Intent(getApplicationContext(),MainActivity.class);
+                        startActivity(i4);
+                        finish();
+                        break;
                 }
                 return false;
             }

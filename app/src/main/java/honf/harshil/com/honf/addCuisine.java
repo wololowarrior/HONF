@@ -30,6 +30,8 @@ public class addCuisine extends SQLiteOpenHelper implements BaseColumns {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(user.create_reg_table);
         sqLiteDatabase.execSQL(CREATE_TABLE);
+        sqLiteDatabase.execSQL(addFavRestaurant.Createtable);
+
         sqLiteDatabase.execSQL(add_restaurant_db.CREATE_TABLE);
     }
 
@@ -40,20 +42,22 @@ public class addCuisine extends SQLiteOpenHelper implements BaseColumns {
 
     boolean insert_data(String nameCuisine) {
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues=new ContentValues();
-        contentValues.put(Cusine_name,nameCuisine);
-        long result=db.insert(TABLE_NAME,null,contentValues);
-        return result!=-1;
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(Cusine_name, nameCuisine);
+        long result = db.insert(TABLE_NAME, null, contentValues);
+        return result != -1;
     }
+
     Cursor getAllCuisine() {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-        return sqLiteDatabase.rawQuery("Select * from "+TABLE_NAME, null);
+        return sqLiteDatabase.rawQuery("Select * from " + TABLE_NAME, null);
 
     }
-    public List<String> getAll(){
-        List<String> cuisines= new ArrayList<String>();
-        SQLiteDatabase database=this.getWritableDatabase();
-        Cursor cursor=database.rawQuery("Select * from "+TABLE_NAME,null);
+
+    public List<String> getAll() {
+        List<String> cuisines = new ArrayList<String>();
+        SQLiteDatabase database = this.getWritableDatabase();
+        Cursor cursor = database.rawQuery("Select * from " + TABLE_NAME, null);
         if (cursor.moveToFirst()) {
             do {
                 cuisines.add(cursor.getString(cursor.getColumnIndex(Cusine_name)));
@@ -63,4 +67,4 @@ public class addCuisine extends SQLiteOpenHelper implements BaseColumns {
         database.close();
         return cuisines;
     }
-    }
+}
